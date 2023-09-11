@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, reactive } from "vue";
 import { useCafeteriaStore } from "@/stores/cafeteriaStore.js";
 import { voteSurvey } from "@/api/cafeteriaApi.js";
 
@@ -13,7 +13,12 @@ const hided = (e) => {
   x.style.display = "none";
 };
 
+const form = reactive({
+  counter: 0,
+});
+
 const like = async (e, a, d) => {
+  form.counter += 1;
   await voteSurvey({
     id: a,
     type: d,
@@ -34,7 +39,7 @@ const like = async (e, a, d) => {
             ><img
               src="https://centralone.ph/wp-content/themes/sandbox/images/logo.png"
               alt="Central One Bataan PH INC."
-              height="18"
+              height="30"
           /></span>
         </div>
         <div class="page-title-box">
@@ -76,10 +81,10 @@ const like = async (e, a, d) => {
                 <p class="font-18 mb-0">
                   <button
                     type="button"
-                    class="btn btn-outline-primary form-control"
+                    class="btn btn-info form-control btn-lg"
                     @click="like('divtabs' + item.id, item.id, 'like')"
                   >
-                    Like
+                    <h1><i class="uil-smile"></i></h1>
                   </button>
                 </p>
               </div>
@@ -88,10 +93,10 @@ const like = async (e, a, d) => {
                 <p class="font-18 mb-0">
                   <button
                     type="button"
-                    class="btn btn-outline-warning form-control"
+                    class="btn btn-warning form-control btn-lg"
                     @click="like('divtabs' + item.id, item.id, 'dislike')"
                   >
-                    Dislike
+                    <h1><i class="uil-sad"></i></h1>
                   </button>
                 </p>
               </div>
@@ -112,5 +117,8 @@ const like = async (e, a, d) => {
         </div>
       </div>
     </div>
+    <h1 v-if="cafeteriaStore.get_shed_menu.length == form.counter">
+      Thank you for answer the survey!
+    </h1>
   </div>
 </template>
