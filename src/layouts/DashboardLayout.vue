@@ -107,7 +107,12 @@ onMounted(() => {
               <ul class="side-nav-second-level">
                 <li>
                   <router-link :to="{ name: 'cafeteria-rating' }"
-                    >CAFETERIA RATING</router-link
+                    >CAFETERIA MENU</router-link
+                  >
+                </li>
+                <li>
+                  <router-link :to="{ name: 'cafeteria-schedule' }"
+                    >MENU SCHED</router-link
                   >
                 </li>
               </ul>

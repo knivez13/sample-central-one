@@ -21,7 +21,7 @@ const router = createRouter({
     {
       path: "/food-survey",
       name: "food-survey",
-      component: () => import("@/views/AboutView.vue"),
+      component: () => import("@/views/Food.vue"),
     },
     {
       path: "/dashboard",
@@ -38,6 +38,14 @@ const router = createRouter({
           component: () =>
             import(
               "@/views/dashboard/administrator/rating/cafeteria/Cafeteria.vue"
+            ),
+        },
+        {
+          name: "cafeteria-schedule",
+          path: "/administrator/rating/schedules",
+          component: () =>
+            import(
+              "@/views/dashboard/administrator/rating/cafeteria/MenuSched.vue"
             ),
         },
       ],
